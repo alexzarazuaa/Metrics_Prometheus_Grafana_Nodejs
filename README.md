@@ -20,7 +20,7 @@ Arrancaremos el contenedor llamado (myapp_practica)  utilizando un docker-compos
 <img src="./Capturas_PracticaDocker/docker-compose__express_3.png">
 
 Dicho servicio se publicará en el puerto 83 y pertenece a una red común a todos los servicios denominada “network_practica”.
-Y utilizamos el comando : sudo docker-compose up para crear y lanzar al mismo tiempo el contenedor
+Y utilizamos el comando : ` sudo docker-compose up ` para crear y lanzar al mismo tiempo el contenedor
 
 
 <img src="./Capturas_PracticaDocker/ejcucion_dockerCompose.png">
@@ -32,12 +32,14 @@ localhost:83
 
 
 Nos sale el Hello World que anteriormente habíamos configurado,.
-Lo que hice fue crear un sencillo app.js y con el comando npm init me genero un package.json muy simple para poder tener el express.
+Lo que hice fue crear un sencillo app.js y con el comando ` npm init `  me genero un package.json muy simple para poder tener el express.
 
-App.js
-PONER LA IMAGEN
+ * App.js
 
-Package.json
+<img src="./Capturas_PracticaDocker/AppJs.png">
+
+ * Package.json
+
 <img src="./Capturas_PracticaDocker/packageJson.png">
 
 ## En esta práctica también hemos utilizado Prometheus.
@@ -51,7 +53,7 @@ En nuestro caso, el servicio de prometheus se encargará de arrancar en el puert
 
 Copiar el fichero adjunto prometheus.yml al directorio /etc/prometheus del
 contenedor
-Ejecutar el comando --config.file=/etc/prometheus/prometheus.yml
+Ejecutar el comando  ` --config.file=/etc/prometheus/prometheus.yml `
 
 
 Para ello los pasos a seguir serán los siguientes : 
@@ -62,4 +64,4 @@ Para ello los pasos a seguir serán los siguientes :
 
 * El servicio responsable de arrancar la aplicación debe ejecutarse antes y el servicio deberá pertenecer a la red común “network_practica”.
 
-* Volvemos a realizar el comando : sudo docker-compose up y nos dirigimos al puerto 9090 , localhost:9090 y nos aparecerá esta pantalla de inicio
+* Volvemos a realizar el comando : ` sudo docker-compose up ` y nos dirigimos al puerto 9090 , localhost:9090 y nos aparecerá esta pantalla de inicio
