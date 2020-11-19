@@ -58,7 +58,7 @@ Para ello los pasos a seguir serán los siguientes :
 
  *   Añadiremos un nuevo servicio a nuestro docker-compose.yml que ya teníamos.
 
-<img src="./Capturas_PracticaDocker/docker_composePrometheus.pngg">
+<img src="./Capturas_PracticaDocker/docker_composePrometheus.png">
 
 * El servicio responsable de arrancar la aplicación debe ejecutarse antes y el servicio deberá pertenecer a la red común “network_practica”.
 
