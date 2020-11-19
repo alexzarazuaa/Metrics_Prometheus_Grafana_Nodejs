@@ -5,3 +5,5 @@
 Para ello en primer lugar lo que haremos será arrancar un contenedor partiendo de un Dockerfile donde pondrá en marcha un sencillo servidor de express.
 
 El dockerfile que hize es el siguiente : 
+
+<img src="./Capturas_PracticaDocker/DockerFileExpressServer__1.png">
