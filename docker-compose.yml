@@ -1,0 +1,29 @@
+version: '3'
+services:
+
+  app:
+    build: .
+    container_name: myapp_practica
+    ports:
+     - "83:3000"
+    networks:
+     - network_practica
+  prometheus:
+    image: prom/prometheus:v2.20.1
+    container_name: prometheus_practica
+    volumes:
+      - ./prometheus/:/etc/prometheus
+    ports:
+      - "9090:9090"
+    depends_on:
+     - app
+    links:
+     - app  
+    command: ["--config.file=/etc/prometheus/prometheus.yml"]
+    networks:
+     - network_practica
+
+volumes:
+  myGrafanaVol: {}
+networks:
+  network_practica: 
