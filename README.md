@@ -53,7 +53,7 @@ express.
 
 Arrancaremos el contenedor llamado (myapp_practica)  utilizando un docker-compose.yml como el que muestro en la captura: 
 
-<img src="./Capturas_PracticaDocker/docker-compose__express_3.png">
+<img src="./Capturas_PracticaDocker/Version1_dockercompose.png">
 
 Dicho servicio se publicará en el puerto 83 y pertenece a una red común a todos los servicios denominada “network_practica”.
 Y utilizamos el comando : ` sudo docker-compose up ` para crear y lanzar al mismo tiempo el contenedor
@@ -96,8 +96,63 @@ Para ello los pasos a seguir serán los siguientes :
 
  *   Añadiremos un nuevo servicio a nuestro docker-compose.yml que ya teníamos.
 
-<img src="./Capturas_PracticaDocker/docker_composePrometheus.png">
+<img src="./Capturas_PracticaDocker/version2docker-compose.png">
 
 * El servicio responsable de arrancar la aplicación debe ejecutarse antes y el servicio deberá pertenecer a la red común “network_practica”.
 
 * Volvemos a realizar el comando : ` sudo docker-compose up ` y nos dirigimos al puerto 9090 , localhost:9090 y nos aparecerá esta pantalla de inicio
+
+<img src="./Capturas_PracticaDocker/local9090.png">
+
+## ¿Qué es Grafana?
+
+ * Grafana es un software libre basado en licencia de Apache 2.0, ​ que permite la visualización y el formato de datos métricos. Permite crear cuadros de mando y gráficos a partir de múltiples fuentes, incluidas bases de datos de series de tiempo como Graphite, InfluxDB y OpenTSDB.
+
+ * Además de las utilidades mencionadas con anterioridad, recalcar que la herramienta también nos permite consultar información de negocio, como es el gasto en infraestructura en tiempo real, e incluso integrar gráficas de negocio del propio cliente.
+
+* Todo ello posiciona al cliente ante una situación muy favorable de cara a poder gestionar de forma eficiente su infraestructura y servicios, permitiéndole anticipar posibles incidencias y reducir costes.
+
+*   *También recalcar que está escrito en Go.*
+
+## Forma de proceder con el cliente
+
+* Con el objetivo de acceder a la plataforma y visualizar la información deseada, la forma de proceder entre Ackstorm y el cliente es la siguiente:
+
+* Se proporciona la clave de acceso al cliente a su plataforma.
+Una vez accede al sistema, un panel general recoge y visualiza los datos más relevantes de su plataforma.
+Des de ahí, el cliente puede navegar entre los distintos paneles disponibles y consultar recursos de una forma totalmente visual e intuitiva.
+
+* En nuestro caso, el servicio de grafana se encargará de arrancar en el puerto 3500 de nuestro host un contenedor (grafana_practica) basado en la imagen grafana/grafana:7.1.5 que, además, se caracterizará por:
+    - Establecer las variables de entorno necesarias para:
+    - Deshabilitar el login de acceso a Grafana
+    - Permitir la autenticación anónima
+    - Que el rol de autenticación anónima sea Admin
+    - Que instale el plugin grafana-clock-panel 1.0.1
+    - Pertenece a la red común “network_practica”
+    - Dispondrá de un volumen nombrado (myGrafanaVol) que          permitirá almacenar
+    los cambios en el servicio ya que se asociará con el directorio /var/lib/grafana
+
+* Añadimos a nuestro compose el servicio de grafana:
+
+<img src="./Capturas_PracticaDocker/ServicioGrafana.png">
+
+* *Para una correcta configuración de Grafana, será necesario realizar la copia
+del fichero adjunto datasources.yml al directorio del contenedor
+/etc/grafana/provisioning/datasources/.*
+
+<img src="./Capturas_PracticaDocker/grafanaYml.png">
+
+### Por lo que nuestro compose quedaría de la siguiente manera :
+<img src="./Capturas_PracticaDocker/Docker-composeFinal.png">
+
+Como hemos hecho anteriormente volvemos a realizar el comando :
+ ` sudo docker-compose up `.
+Se accede correctamente a la aplicación que se ejecuta en el contenedor a través del
+puerto 83
+
+<img src="./Capturas_PracticaDocker/localho83.png">
+
+- Se accede correctamente a Prometheus en el puerto 9090 y que en el apartado Status
+- Targets muestran el acceso correcto a las métricas capturadas en la app.
+
+<img src="./Capturas_PracticaDocker/targetsPrometehus.png">
