@@ -8,6 +8,8 @@ services:
      - "83:3000"
     networks:
      - network_practica
+
+
   prometheus:
     image: prom/prometheus:v2.20.1
     container_name: prometheus_practica
@@ -20,6 +22,25 @@ services:
     links:
      - app  
     command: ["--config.file=/etc/prometheus/prometheus.yml"]
+    networks:
+     - network_practica
+
+  grafana:
+    image: grafana/grafana:7.1.5
+    container_name: grafana_practica
+    environment:
+      - GF_USERS_ALLOW_SIGN_UP=true
+      - GF_SMTP_ENABLED=true
+      - GF_INSTALL_PLUGINS=grafana-clock-panel 1.0.1
+    volumes:
+      - myGrafanaVol:/var/lib/grafana
+      - ./grafana/:/etc/grafana/provisioning/datasources/
+    ports:
+      - "3500:3500"
+    depends_on:
+     - prometheus
+    links:
+     - prometheus   
     networks:
      - network_practica
 
