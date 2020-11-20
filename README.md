@@ -1,6 +1,42 @@
 # Alex Zarazua -- Práctica Docker Compose
 
-##  El propósito de este proyecto será un sistema de monitorización con prometheus y grafana de peticiones a endpoints de un servidor nodejs.
+# INDEX
+  * ¿Qué es Docker?
+  * ¿Qué es Docker Compose?
+  * Propósito del proyecto
+  * Tecnologías Implicadas
+  * Proceso de Desarrollo
+  
+##  ¿Qué es Docker?
+    -  La idea detrás de Docker es crear contenedores ligeros y portables para las aplicaciones software que puedan ejecutarse en cualquier máquina con Docker instalado, independientemente del sistema operativo que la máquina tenga por debajo, facilitando así también los despliegues.
+##  ¿Qué es un Contenedor?
+ - Digamos que son donde se almacena y empaqueta  todo lo necesario para que dicho software se ejecute.
+Es algo auto contenido en sí, que se puede llevar de un lado a   otro de forma independiente, es portable.
+
+##  ¿Cómo funciona Docker?
+  La tecnología Docker usa el kernel de Linux y las funciones de este, como Cgroups y namespaces, para segregar los procesos, de modo que puedan ejecutarse de manera independiente.
+  El propósito de los contenedores es esta independencia: la capacidad de ejecutar varios procesos y aplicaciones por separado para hacer un mejor uso de su infraestructura y, al mismo tiempo, conservar la seguridad que tendría con sistemas separados.
+  Las herramientas del contenedor, como Docker, ofrecen un modelo de implementación basado en imágenes. Esto permite compartir una aplicación, o un conjunto de servicios, con todas sus dependencias en varios entornos.
+
+## Ventajas de los contenedores Docker
+* Modularidad
+* Control de versiones de imágenes y capas
+* Restauración
+* Implementación rápida
+
+## ¿Qué es Docker Compose?
+   -  Docker compose es una herramienta desarrollada para ayudar a definir y compartir aplicaciones de varios contenedores. Con Compose, puede crear un archivo YAML para definir los servicios y, con un solo comando, ponerlo todo en marcha o eliminarlo.
+
+La *gran ventaja*  de usar Compose es que puede definir la pila de la aplicación en un archivo, mantenerlo en la raíz del repositorio del proyecto (ahora tendrá control de versiones) y permitir que un tercero contribuya al proyecto. Un usuario solo tendría que clonar el repositorio e iniciar la aplicación Compose. 
+De hecho, es posible que vea bastantes proyectos en GitHub/GitLab en los que se hace exactamente esto.
+
+
+## Propósito del proyecto
+
+El propósito de este proyecto será crear un sistema de monitorización con prometheus y grafana de peticiones a endpoints de un servidor nodejs.
+
+
+## Proceso de Desarrollo
 
 Para ello en primer lugar lo que haremos será arrancar un contenedor partiendo de un Dockerfile donde pondrá en marcha un sencillo servidor de express.
 
