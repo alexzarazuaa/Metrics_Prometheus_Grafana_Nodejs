@@ -159,3 +159,59 @@ puerto 83
 - Targets muestran el acceso correcto a las métricas capturadas en la app.
 
 <img src="./Capturas_PracticaDocker/targetsPrometehus.png">
+
+- Se accede correctamente a la aplicación de Grafana en el puerto 3500 y se
+puede crear un nuevo dashboard para poder incluir paneles en los que mostrar las
+métricas recogidas en la app. Averiguar cómo incluir un panel con las peticiones
+asociadas a cada endpoint y otro con un contador de peticiones totales a endpoints.
+
+Para realizar la siguiente comprobación primero añadimos  las variables de entorno en el graphana para poder entrar sin necesidad de loguearse : 
+
+<img src="./Capturas_PracticaDocker/ServicioGrafana.png">
+
+
+Volvemos a reliazar el famoso comando : ` sudo docker-compose up  `
+y seguidamente a localhost:3500 para acceder a la página de grafana.
+
+- Una vez dentro de  grafana, en la barra lateral izquierda veremos un apartado donde podremos crear un nuevo dashboard, después cuando ya vemos el dashboard en la parte inferior en el apartado de query seleccionamos el de prometheus.
+
+Más adelante le añadimos las dos métricas COUNTER HOME ENDPOINT y COUNTER MESSAGE ENDPOINT , y realizamos peticiones desde localhost:83 y localhost:83/message
+
+<img src="./Capturas_PracticaDocker/HomeEndpoint.png">
+
+_En este panel podremos visualizar estadísticas sobre el número de endpoints que hemos realizado
+Guardamos el panel pulsando en el botón de apply y procedemos a crear el siguiente, el cual nos mostrará la media del total de nuestras peticiones._
+
+Para ello creamos otro dashboard , en la pestaña de query añadimos como anteriormente prometheus.
+En este caso solo añadiremos una métrica la cual contendrá la suma de los endpoint de home y message.
+
+<img src="./Capturas_PracticaDocker/SUM_HOME_MESSAGE.png">
+
+_Pulsamos el botón de apply de tal manera que veremos los dos paneles de la siguiente manera._
+
+<img src="./Capturas_PracticaDocker/PeticionsGraphana.png">
+
+## PROYECTO SERVIDOR
+
+Pasamos a realizar las mismas operaciones pero con el proyecto de las asignatura de Servidor.
+Para ello lo primero que debemos hacer es añadir las siguientes dependencias en el package,json del backend de rest que será el elegido para probar los paneles .
+
+ ` "prom-client": "^12.0.0",
+ "response-time": "^2.3.2", `
+
+
+*Una vez añadidas, realizamos un npm install para instalarlas en nuestro proyecto.*
+
+
+El siguiente paso será adaptar el docker-compose.yml que teníamos añadiendo los servicios de prometheus y grafana de tal manera :
+-Este es el que teníamos antes :
+
+<img src="./Capturas_PracticaDocker/docker2.png">
+
+- Y aquí le hemos añadido los servicios comentados anteriormente
+
+<img src="./Capturas_PracticaDocker/docker2.1.png">
+
+
+
+
