@@ -213,5 +213,19 @@ El siguiente paso será adaptar el docker-compose.yml que teníamos añadiendo l
 <img src="./Capturas_PracticaDocker/docker2.1.png">
 
 
+- Más adelante, crearemos un archivo js donde incluiremos la configuración necesaria.
+
+<img src="./Capturas_PracticaDocker/metricsJS.png">
+
+<img src="./Capturas_PracticaDocker/MetricsJs.png">
+
+_En el index.js lo damos de alta el metrics.js_
+
+
+<img src="./Capturas_PracticaDocker/indexJs.png">
+
+Y por último nos iremos al controlador, en mi caso el de las noticias ya que mi app era digamos un periodico digital.
+Añadimos los requiere del prom-client que anteriormente ya habíamos añadido en el package.json, además de él collectDefaultMetrics y los dos contadores necesarios.
+
 
 
