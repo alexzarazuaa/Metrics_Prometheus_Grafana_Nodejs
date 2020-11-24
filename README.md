@@ -227,5 +227,45 @@ _En el index.js lo damos de alta el metrics.js_
 Y por último nos iremos al controlador, en mi caso el de las noticias ya que mi app era digamos un periodico digital.
 Añadimos los requiere del prom-client que anteriormente ya habíamos añadido en el package.json, además de él collectDefaultMetrics y los dos contadores necesarios.
 
+<img src="./Capturas_PracticaDocker/Controller_NEWS.png">
+
+-  En el endpoint donde cogemos todas las noticias añadiremos el inc de contador correspondiente para que cada vez que realizamos un endpoint lo vaya incrementando.
+
+<img src="./Capturas_PracticaDocker/INC_News.png">
 
 
+- _Lo mismo para cuando sea solo de una sola noticia_
+
+<img src="./Capturas_PracticaDocker/INC_NEW.png">
+
+
+- Una vez tengamos estos pasos, ya podremos realizar el famoso comando;
+`sudo docker-compose up` donde tengamos el docker-composer.yml en mi caso dentro de la carpeta de backend/rest.
+
+<img src="./Capturas_PracticaDocker/Docker-composeUp.png">
+
+
+- Nos dirigimos a prometheus, es decir el http://localhost:9090/targets y comprobamos que esté en up;
+
+
+<img src="./Capturas_PracticaDocker/TargetNewsUp.png">
+
+
+Y después  en el http://localhost:3500/ , para crear los paneles.
+Para crear los paneles seguiremos los mismos pasos que en el ejercicio anterior.
+
+* _Una vez dentro de grafana, en la barra lateral izquierda veremos un apartado donde podremos crear un nuevo dashboard, después cuando ya vemos el dashboard en la parte inferior en el apartado de query seleccionamos el de prometheus._
+
+ * _Más adelante le añadimos las dos métricas COUNTER NEWS  ENDPOINT y COUNTER NEW ENDPOINT , y realizamos peticiones desde http://localhost:3000/api/news y http://localhost:3000/api/news/test-kz7xie (para hacer el endpoint de una sola utilizando su slug)_
+
+Estras metricas para el primer panel .
+
+<img src="./Capturas_PracticaDocker/NewsMetrics.png">
+
+Y la metrica de la suma para el siguiente panel : 
+
+<img src="./Capturas_PracticaDocker/SUM_NEWS.png">
+
+De tal manera que nos quedarán estos dos paneles.
+
+<img src="./Capturas_PracticaDocker/PETICIONESNEWS.png">
