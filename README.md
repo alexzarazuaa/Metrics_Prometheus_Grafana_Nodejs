@@ -269,3 +269,7 @@ Y la metrica de la suma para el siguiente panel :
 De tal manera que nos quedarán estos dos paneles.
 
 <img src="./Capturas_PracticaDocker/PETICIONESNEWS.png">
+
+_En el panel de peticiones por endpoint las linea están rectas ya que hice muchas peticiones al mismo tiempo, si hubiera esperado unos segundos a realizar peticiones hubieran salido como en el ejemplo anterior con varios picos._
+
+**ALEX ZARAZUA 24 de Noviembre de 2020**
