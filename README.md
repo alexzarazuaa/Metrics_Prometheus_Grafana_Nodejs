@@ -70,7 +70,7 @@ localhost:83
 <img src="./Capturas_PracticaDocker/hello_world__express__4.png">
 
 
-Nos sale el Hello World que anteriormente habíamos configurado,.
+Nos sale el Hello World que anteriormente habíamos configurado.
 Lo que hice fue crear un sencillo app.js y con el comando ` npm init `  me genero un package.json muy simple para poder tener el express.
 
  * App.js
